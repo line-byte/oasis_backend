@@ -1,7 +1,7 @@
 import json
 import os
 
-ARQUIVO = "habitos.json"
+ARQUIVO = "../data/habitos.json"
 
 def carregar_dados():
     if os.path.exists(ARQUIVO):

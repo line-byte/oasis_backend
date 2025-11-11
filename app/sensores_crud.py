@@ -2,15 +2,15 @@ import json
 from datetime import datetime
 import os
 
-bps ='sint.json'
+BPS = "./data/sint.json"
 
 def salvar(bpms):
-    with open(bps, "w", encoding="utf-8") as dados:
+    with open(BPS, "w", encoding="utf-8") as dados:
         return json.dump(bpms,dados,indent=4,ensure_ascii=False)
     
 def carregar():
-    if os.path.exists(bps):
-        with open(bps, "r", encoding="utf-8") as dados:
+    if os.path.exists(BPS):
+        with open(BPS, "r", encoding="utf-8") as dados:
             return json.load(dados)
     return []
 
