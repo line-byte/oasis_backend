@@ -8,6 +8,17 @@ import bcrypt
 
 load_dotenv()
 
+"""
+    Esta branch pertence ao desenvolvedor: Abraão
+
+    LISTA DE ALTERAÇÕES:
+    - Alt 1,
+    - Alt 2,
+    - Alt 3,
+    - Alt 4,
+    - ...
+"""
+
 server = Flask(__name__)
 CORS(server, resources={r"/*": {
     "origins": "*", 
