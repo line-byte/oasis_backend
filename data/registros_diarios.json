@@ -40,5 +40,12 @@
         "data": "2025-11-17",
         "user_id": 1,
         "data_criacao": "2025-11-17T20:29:04.782469"
+    },
+    {
+        "id": 7,
+        "conteudo": "Projeto, finalmente, concluído",
+        "data": "2025-11-17",
+        "user_id": 1,
+        "data_criacao": "2025-11-17T20:40:57.257574"
     }
 ]

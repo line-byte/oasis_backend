@@ -1,13 +1,13 @@
 [
     {
         "id": 1,
-        "titulo": "Estudar",
-        "descricao": "Python",
+        "titulo": "Estudar Programação",
+        "descricao": "Python e JavaScript",
         "categoria": "cat_aprendizado",
         "repetir": true,
-        "tipo_repeticao": "diario",
+        "tipo_repeticao": "semanal",
         "dia_referencia": "2025-11-17",
-        "proxima_data": "2025-11-18",
+        "proxima_data": "2025-11-24",
         "completado": true,
         "ultimo_completado": "2025-11-17",
         "sequencia_atual": 1,

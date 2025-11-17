@@ -1,9 +1,9 @@
 [
     {
         "id": 1,
-        "nome": "Abraão Filipi dos Santos",
+        "nome": "Abraão F. Santos",
         "email": "abraao@gmail.com",
-        "senha": "$2b$12$qwpcZ0X67vG6A2XxGf9lyOkJstwTXMBsNNNKuU5UKbOQRqHB7w0Nq",
+        "senha": "$2b$12$RFFVF/s99dMXr.ToitEmTeA1pZmtrwjrGyMC4wDtcolSap3J6qElW",
         "idade": 21,
         "data_nascimento": "2004-01-20",
         "sexo": "M",
@@ -16,6 +16,16 @@
         "senha": "$2b$12$Ry5Z.T8YbTiIDblLTnkhC.68DzbvmGZzUc/7wsUP202q32hg8FOli",
         "idade": 29,
         "data_nascimento": "1996-12-15",
+        "sexo": "M",
+        "data_criacao": "2025-11-17"
+    },
+    {
+        "id": 3,
+        "nome": "Luiz dos Santos",
+        "email": "luiz@email.com",
+        "senha": "$2b$12$eEKyuvctZtgK7GpQjRpHHOa.G/YYzUdldYgvfKNhEY2m2YhojAv6e",
+        "idade": 21,
+        "data_nascimento": "2004-01-20",
         "sexo": "M",
         "data_criacao": "2025-11-17"
     }
