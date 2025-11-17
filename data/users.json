@@ -22,5 +22,15 @@
         "idade": 20,
         "data_nascimento": null,
         "sexo": "Feminino"
+    },
+    {
+        "id": 1,
+        "nome": "João",
+        "email": "jaozao@gmail.com",
+        "senha": "$2b$12$/ZEJcMP9fOzfFnF/f6rdqOdtm7gjHhYQ.ryRoRcKS6Mx6j5TE4PnG",
+        "idade": 20,
+        "data_nascimento": null,
+        "sexo": "Masculino",
+        "data_criacao": "2025-11-17"
     }
 ]
