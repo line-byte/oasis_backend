@@ -115,3 +115,75 @@ def listar_usuarios():
         usuarios_sem_senha.append(usuario_limpo)
     
     return usuarios_sem_senha
+
+
+def buscar_usuario_por_id(user_id):
+    """Busca um usuário pelo ID"""
+    usuarios = carregar_usuarios()
+    for usuario in usuarios:
+        if usuario.get('id') == user_id:
+            return usuario
+    return None
+
+
+def atualizar_usuario(user_id, dados_atualizacao):
+    """Atualiza dados de um usuário existente"""
+    usuarios = carregar_usuarios()
+    usuario_encontrado = None
+    indice = None
+    
+    # Busca o usuário pelo ID
+    for i, usuario in enumerate(usuarios):
+        if usuario.get('id') == user_id:
+            usuario_encontrado = usuario
+            indice = i
+            break
+    
+    if not usuario_encontrado:
+        return {"sucesso": False, "mensagem": "Usuário não encontrado"}
+    
+    # Verifica se o novo email já está em uso por outro usuário
+    novo_email = dados_atualizacao.get('email')
+    if novo_email and novo_email != usuario_encontrado.get('email'):
+        usuario_email_existente = buscar_usuario_por_email(novo_email)
+        if usuario_email_existente and usuario_email_existente.get('id') != user_id:
+            return {"sucesso": False, "mensagem": "Email já está em uso por outro usuário"}
+    
+    # Atualiza campos permitidos
+    if 'nome' in dados_atualizacao:
+        usuario_encontrado['nome'] = dados_atualizacao['nome']
+    
+    if 'email' in dados_atualizacao:
+        usuario_encontrado['email'] = dados_atualizacao['email']
+    
+    if 'data_nasc' in dados_atualizacao:
+        usuario_encontrado['data_nascimento'] = dados_atualizacao['data_nasc']
+    
+    if 'idade' in dados_atualizacao:
+        usuario_encontrado['idade'] = dados_atualizacao['idade']
+    
+    if 'sexo' in dados_atualizacao:
+        usuario_encontrado['sexo'] = dados_atualizacao['sexo']
+    
+    # Se senha foi fornecida, atualiza o hash
+    if 'senha' in dados_atualizacao and dados_atualizacao['senha']:
+        nova_senha = dados_atualizacao['senha']
+        # Valida tamanho mínimo
+        if len(nova_senha) < 6:
+            return {"sucesso": False, "mensagem": "A senha deve ter no mínimo 6 caracteres"}
+        # Gera novo hash
+        hash_senha = bcrypt.hashpw(nova_senha.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        usuario_encontrado['senha'] = hash_senha
+    
+    # Atualiza no array e salva
+    usuarios[indice] = usuario_encontrado
+    salvar_usuarios(usuarios)
+    
+    # Retorna usuário atualizado (sem senha)
+    usuario_retorno = {k: v for k, v in usuario_encontrado.items() if k != 'senha'}
+    
+    return {
+        "sucesso": True,
+        "mensagem": "Usuário atualizado com sucesso",
+        "usuario": usuario_retorno
+    }

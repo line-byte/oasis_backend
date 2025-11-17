@@ -26,5 +26,19 @@
         "data": "2025-11-17",
         "user_id": 1,
         "data_criacao": "2025-11-17T18:35:38.822344"
+    },
+    {
+        "id": 5,
+        "conteudo": "Novo teste",
+        "data": "2025-11-17",
+        "user_id": 1,
+        "data_criacao": "2025-11-17T20:26:57.161083"
+    },
+    {
+        "id": 6,
+        "conteudo": "Este dia foi marcado por um (quase) burnout. ;-;",
+        "data": "2025-11-17",
+        "user_id": 1,
+        "data_criacao": "2025-11-17T20:29:04.782469"
     }
 ]
