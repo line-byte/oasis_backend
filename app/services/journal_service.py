@@ -92,7 +92,6 @@ def atualizar_registro(registro_id, conteudo=None, user_id=None):
     
     return {"sucesso": False, "mensagem": "Registro não encontrado"}
 
-
 def excluir_registro(registro_id, user_id=None):
     registros = carregar_registros()
     
