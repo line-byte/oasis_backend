@@ -51,7 +51,6 @@ def buscar_registro_por_data(user_id, data):
     encontrados = [r for r in registros if r.get('user_id') == user_id and r.get('data') == data]
     return encontrados
 
-
 def criar_registro(conteudo, user_id, data=None):
     if not conteudo or not user_id:
         return {"sucesso": False, "mensagem": "Conteúdo e ID do usuário são obrigatórios"}
