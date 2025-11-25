@@ -74,7 +74,6 @@ def criar_registro(conteudo, user_id, data=None):
     
     return {"sucesso": True, "mensagem": "Registro criado com sucesso", "registro": novo_registro, "atualizado": False}
 
-
 def atualizar_registro(registro_id, conteudo=None, user_id=None):
     registros = carregar_registros()
     
