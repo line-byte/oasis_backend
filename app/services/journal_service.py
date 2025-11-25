@@ -7,7 +7,6 @@ JOURNAL_FILE = "data/registros_diarios.json"
 
 
 def carregar_registros():
-    """Carrega registros diários do arquivo JSON"""
     try:
         if os.path.exists(JOURNAL_FILE):
             with open(JOURNAL_FILE, 'r', encoding='utf-8') as file:
@@ -18,34 +17,28 @@ def carregar_registros():
 
 
 def salvar_registros(registros):
-    """Salva registros diários no arquivo JSON"""
     with open(JOURNAL_FILE, 'w', encoding='utf-8') as file:
         json.dump(registros, file, ensure_ascii=False, indent=4)
 
 
 def gerar_id_registro(registros):
-    """Gera um ID único para novo registro"""
     if not registros:
         return 1
     return max(r.get('id', 0) for r in registros) + 1
 
 
 def listar_registros():
-    """Retorna todos os registros"""
     return carregar_registros()
 
 
 def listar_registros_por_usuario(user_id):
-    """Retorna todos os registros de um usuário específico"""
     registros = carregar_registros()
     registros_usuario = [r for r in registros if r.get('user_id') == user_id]
-    # Ordena por timestamp de criação decrescente para mostrar entradas mais recentes primeiro
     registros_usuario.sort(key=lambda x: x.get('data_criacao', ''), reverse=True)
     return registros_usuario
 
 
 def buscar_registro_por_id(registro_id):
-    """Busca um registro específico pelo ID"""
     registros = carregar_registros()
     for registro in registros:
         if registro.get('id') == registro_id:
@@ -54,15 +47,12 @@ def buscar_registro_por_id(registro_id):
 
 
 def buscar_registro_por_data(user_id, data):
-    """Busca registro de um usuário em uma data específica"""
     registros = carregar_registros()
-    # Retorna lista de registros na data especificada (agora permitimos múltiplos registros por dia)
     encontrados = [r for r in registros if r.get('user_id') == user_id and r.get('data') == data]
     return encontrados
 
 
 def criar_registro(conteudo, user_id, data=None):
-    """Cria um novo registro diário"""
     if not conteudo or not user_id:
         return {"sucesso": False, "mensagem": "Conteúdo e ID do usuário são obrigatórios"}
     
@@ -71,7 +61,6 @@ def criar_registro(conteudo, user_id, data=None):
     
     registros = carregar_registros()
 
-    # Cria um novo registro (permitimos múltiplas entradas no mesmo dia)
     novo_registro = {
         "id": gerar_id_registro(registros),
         "conteudo": conteudo,
@@ -87,12 +76,10 @@ def criar_registro(conteudo, user_id, data=None):
 
 
 def atualizar_registro(registro_id, conteudo=None, user_id=None):
-    """Atualiza um registro existente"""
     registros = carregar_registros()
     
     for registro in registros:
         if registro.get('id') == registro_id:
-            # Verifica se o usuário é o dono do registro
             if user_id and registro.get('user_id') != user_id:
                 return {"sucesso": False, "mensagem": "Você não tem permissão para editar este registro"}
             
@@ -107,12 +94,10 @@ def atualizar_registro(registro_id, conteudo=None, user_id=None):
 
 
 def excluir_registro(registro_id, user_id=None):
-    """Exclui um registro"""
     registros = carregar_registros()
     
     for i, registro in enumerate(registros):
         if registro.get('id') == registro_id:
-            # Verifica se o usuário é o dono do registro
             if user_id and registro.get('user_id') != user_id:
                 return {"sucesso": False, "mensagem": "Você não tem permissão para excluir este registro"}
             
